@@ -26,12 +26,6 @@ export default function Login() {
 
     const handlePw = (e) => {
         setPw(e.target.value);
-        // const regex = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
-        // if (regex.test(pw)) {
-        //     setPwValid(true);
-        // } else {
-        //     setPwValid(false);
-        // }
         setPwValid(true);
     }
 
@@ -55,7 +49,7 @@ export default function Login() {
         <div className="page">
             <div className="leftSide">
                 <div className='titleWrap'>
-                <img src={`${process.env.PUBLIC_URL}/dwl_logo.png`} alt="Login Icon" style={{ width: '130px', height: '130px', display: 'block', margin: '0 auto'}} />
+                <img src={`${process.env.PUBLIC_URL}/dwl_logo.png`} alt="Login Icon" style={{ width: '80%', height: '45%', display: 'block', margin: '0 auto'}} />
                 <br/>
                 SRT 예약하기
                 </div>
@@ -76,7 +70,7 @@ export default function Login() {
                         )}
                     </div>
 
-                    <div style={{ marginTop: "27px" }} className="inputTitle">비밀번호</div>
+                    <div style={{ marginTop: "5px" }} className="inputTitle">비밀번호</div>
                     <div className="inputWrap">
                         <input
                             type="password"
@@ -86,7 +80,7 @@ export default function Login() {
                             onChange={handlePw}/>
                     </div>
                     <div className="station">
-                        <div className="startstation">출발역
+                        <div style={{ marginTop: "5px" }} className="startstation">출발역
                             <div className="inputWrap">
                                 <input
                                     type="text"
@@ -95,12 +89,32 @@ export default function Login() {
                                 />
                             </div>
                         </div>
-                        <div className="arrivestation">도착역
+                        <div style={{ marginTop: "5px" }} className="arrivestation">도착역
                             <div className="inputWrap">
                                 <input
                                     type="text"
                                     className="input"
                                     placeholder="도착역 입력"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="station">
+                        <div style={{ marginTop: "5px" }} className="startstation">출발날짜
+                            <div className="inputWrap">
+                                <input
+                                    type="text"
+                                    className="input"
+                                    placeholder="출발날짜 입력"
+                                />
+                            </div>
+                        </div>
+                        <div style={{ marginTop: "5px" }} className="arrivestation">출발시간
+                            <div className="inputWrap">
+                                <input
+                                    type="text"
+                                    className="input"
+                                    placeholder="출발시간 입력력"
                                 />
                             </div>
                         </div>
