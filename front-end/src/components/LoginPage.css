@@ -129,3 +129,7 @@ a {
     border-bottom-right-radius: 15px; /* 오른쪽 하단 모서리 둥글게 */
     overflow: hidden; /* 내부 요소가 박스 바깥으로 나가지 않도록 */
 }
+
+.station {
+    display: flex;
+}

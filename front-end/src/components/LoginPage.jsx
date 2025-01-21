@@ -85,24 +85,36 @@ export default function Login() {
                             value={pw}
                             onChange={handlePw}/>
                     </div>
-
+                    <div className="station">
+                        <div className="startstation">출발역
+                            <div className="inputWrap">
+                                <input
+                                    type="text"
+                                    className="input"
+                                    placeholder="출발역을 입력"
+                                />
+                            </div>
+                        </div>
+                        <div className="arrivestation">도착역
+                            <div className="inputWrap">
+                                <input
+                                    type="text"
+                                    className="input"
+                                    placeholder="도착역 입력"
+                                />
+                            </div>
+                        </div>
+                    </div>
                     <div className="errorMessageWrap">
                         {!pwValid && pw.length > 0 && (
                             <div>영문, 숫자, 특수문자 포함 8자 이상 입력해주세요.</div>
                         )}
                     </div>
                 </div>
-
                 <div className='buttonWrap'>
                     <button onClick={onClickConfirmButton} disabled={notAllow} className="bottomButton">
                         시작하기
                     </button>
-                </div>
-                <hr nonshade/>
-                <div className='registerWrap'>
-                    <div className='registerTitle'>
-                        계정이 없으신가요? <Link to="/register">가입하기</Link>
-                    </div>
                 </div>
             </div>
             <div className="rightSide">
