@@ -13,6 +13,32 @@ export default function Login() {
     const [phoneValid, setPhoneValid] = useState(false);
     const [pwValid, setPwValid] = useState(false);
     const [notAllow, setNotAllow] = useState(true);
+    const [depStation, setDepStation] = useState(' ');
+    const [arrStation, setArrStation] = useState(' ');
+    const [departureDate, setDepartureDate] = useState('');
+    const [departureTime, setDepartureTime] = useState('');
+
+    const hours = ['00', '02', '04', '06', '08', '10', '12', '14', '16', '18', '20', '22'];
+
+    // 날짜 생성 로직
+    const generateDates = () => {
+        const dates = [];
+        const today = new Date();
+        for (let i = 0; i < 32; i++) {
+            const futureDate = new Date(today);
+            futureDate.setDate(futureDate.getDate() + i);
+            dates.push(futureDate.toISOString().split('T')[0]); // YYYY-MM-DD 포맷
+        }
+        return dates;
+    };
+
+    const dates = generateDates();
+
+    const stations = [
+        '수서', '동탄', '평택지제', '천안아산', '오송', '대전', '김천구미', '서대구', '동대구', '경주', 
+        '울산(통도사)', '부산', '공주', '익산', '정읍', '광주송정', '나주', '목포', '전주', '남원', '곡성', 
+        '구례구', '순천', '여천', '여수EXPO', '밀양', '진영', '창원중앙', '창원', '마산', '진주', '포항'
+    ];
 
     const handlePhone = (e) => {
         setPhone(e.target.value);
@@ -70,7 +96,7 @@ export default function Login() {
                         )}
                     </div>
 
-                    <div style={{ marginTop: "5px" }} className="inputTitle">비밀번호</div>
+                    <div style={{ marginTop: "30px" }} className="inputTitle">비밀번호</div>
                     <div className="inputWrap">
                         <input
                             type="password"
@@ -80,42 +106,62 @@ export default function Login() {
                             onChange={handlePw}/>
                     </div>
                     <div className="station">
-                        <div style={{ marginTop: "5px" }} className="startstation">출발역
+                        <div style={{ marginTop: "30px" }} className="startstation">출발역
                             <div className="inputWrap">
-                                <input
-                                    type="text"
+                                <select
                                     className="input"
-                                    placeholder="출발역을 입력"
-                                />
+                                    value={depStation}
+                                    onChange={(e) => setDepStation(e.target.value)}
+                                >
+                                    <option value="">출발역 선택</option>
+                                    {stations.map((station, index) => (
+                                        <option key={index} value={station}>{station}</option>
+                                    ))}
+                                </select>
                             </div>
                         </div>
-                        <div style={{ marginTop: "5px" }} className="arrivestation">도착역
+                        <div style={{ marginTop: "30px" }} className="arrivestation">도착역
                             <div className="inputWrap">
-                                <input
-                                    type="text"
+                                <select
                                     className="input"
-                                    placeholder="도착역 입력"
-                                />
+                                    value={arrStation}
+                                    onChange={(e) => setArrStation(e.target.value)}
+                                >
+                                    <option value="">도착역 선택</option>
+                                    {stations.map((station, index) => (
+                                        <option key = {index} value={station}>{station}</option>
+                                    ))}
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div className="station">
-                        <div style={{ marginTop: "5px" }} className="startstation">출발날짜
+                        <div style={{ marginTop: "30px" }} className="startstation">출발날짜
                             <div className="inputWrap">
-                                <input
-                                    type="text"
+                                <select
                                     className="input"
-                                    placeholder="출발날짜 입력"
-                                />
+                                    value={departureDate}
+                                    onChange={(e) => setDepartureDate(e.target.value)}
+                                >
+                                    <option value="">날짜 선택</option>
+                                    {dates.map((date, index) => (
+                                        <option key={index} value={date}>{date}</option>
+                                    ))}
+                                </select>
                             </div>
                         </div>
-                        <div style={{ marginTop: "5px" }} className="arrivestation">출발시간
+                        <div style={{ marginTop: "30px" }} className="arrivestation">출발시간
                             <div className="inputWrap">
-                                <input
-                                    type="text"
+                                <select
                                     className="input"
-                                    placeholder="출발시간 입력력"
-                                />
+                                    value={departureTime}
+                                    onChange={(e) => setDepartureTime(e.target.value)}
+                                >
+                                    <option value="">시간 선택</option>
+                                    {hours.map((hour, index) => (
+                                        <option key={index} value={hour}>{hour}</option>
+                                    ))}
+                                </select>
                             </div>
                         </div>
                     </div>
